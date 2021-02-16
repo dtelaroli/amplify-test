@@ -74,8 +74,10 @@ amplify push
 
 ## Mock
 
+Easy local running with Amplify Mock
+
 ```
-amplify mock api
+amplify mock
 ```
 
 ## Frontend
