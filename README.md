@@ -116,5 +116,6 @@ amplify add hosting
 ### Deployment
 
 ```
+# manual
 amplify publish
 ```

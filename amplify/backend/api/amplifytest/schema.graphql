@@ -1,5 +1,4 @@
-type Tasks
-  @key(fields: ["id", "updatedAt"])
+type Task
   @model
   @auth(
     rules: [
