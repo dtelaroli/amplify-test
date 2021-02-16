@@ -1,0 +1,35 @@
+type Tasks
+  @key(fields: ["id", "updatedAt"])
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Managers"]
+        queries: [list]
+        mutations: [create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["Employees"]
+        queries: [get, list]
+        mutations: null
+      }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  status: TaskStatus!
+}
+
+type PrivateNote @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  content: String!
+}
+
+enum TaskStatus {
+  PENDING
+  DOING
+  COMPLETE
+}
