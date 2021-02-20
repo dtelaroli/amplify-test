@@ -117,7 +117,6 @@ Parameters:
   userPoolGroupList:
     Type: CommaDelimitedList
       
-            
   serviceName:
     Type: String
   
@@ -184,34 +183,7 @@ Resources:
           Name: email
           Required: true
           Mutable: true
-        -
-          Name: phone_number
-          Required: true
-          Mutable: true
-        -
-          Name: preferred_username
-          Required: false
-          Mutable: true
-        -
-          Name: name
-          Required: false
-          Mutable: true
-        -
-          Name: birthdate
-          Required: false
-          Mutable: true
-        -
-          Name: picture
-          Required: false
-          Mutable: true
-        -
-          Name: zoneinfo
-          Required: false
-          Mutable: true
-        -
-          Name: locale
-          Required: false
-          Mutable: true
+        
       
       
       

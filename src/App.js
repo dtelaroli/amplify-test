@@ -1,16 +1,18 @@
-import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
+import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import Amplify from 'aws-amplify'
-import { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import './App.css'
 import awsExports from './aws-exports'
-import { AddTask, EditTask, ListTasks } from './pages/Task'
+import { Image } from './pages/Image'
 import {
   AddPrivateNote,
   EditPrivateNote,
   ListPrivateNotes
 } from './pages/PrivateNote'
+import { AddTask, EditTask, ListTasks } from './pages/Task'
+
 Amplify.configure(awsExports)
 
 const App = () => {
@@ -24,6 +26,9 @@ const App = () => {
             </li>
             <li>
               <Link to='/private-notes'>Private Notes</Link>
+            </li>
+            <li>
+              <Link to='/image'>Image</Link>
             </li>
           </ul>
         </nav>
@@ -51,6 +56,9 @@ const App = () => {
               </Route>
               <Route path='/private-notes/:id'>
                 <EditPrivateNote />
+              </Route>
+              <Route path='/image' exact={true}>
+                <Image />
               </Route>
             </Switch>
           </main>
@@ -80,8 +88,8 @@ const AuthStateApp = () => {
       <App />
     </Fragment>
   ) : (
-    <AmplifyAuthenticator />
-  )
+      <AmplifyAuthenticator />
+    )
 }
 
 export default AuthStateApp

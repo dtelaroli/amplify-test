@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { PrivateNoteForm } from './form'
 import { formatDateTime } from '../../utils'
+import React from 'react'
 
 export const ListPrivateNotesView = ({ privateNotes = [], remove }) => {
   return (

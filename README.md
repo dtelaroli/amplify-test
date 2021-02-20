@@ -47,7 +47,7 @@ Add default attributes to Cognito, you can't change after creation.
 
 ```
 Schema:
-        
+
   -
     Name: email
     Required: true
@@ -80,6 +80,18 @@ Easy local running with Amplify Mock
 amplify mock
 ```
 
+## Add storage
+
+```
+amplify add storage
+```
+
+## Function
+
+```
+amplify add function
+```
+
 ## Frontend
 
 https://docs.amplify.aws/start/getting-started/setup/q/integration/react
@@ -109,15 +121,31 @@ Add to ./src/App.js
 import { withAuthenticator } from '@aws-amplify/ui-react'
 ```
 
+### Storage Images
+
+```
+<AmplifyS3Image imgKey="profile.png" level="private" />
+<AmplifyS3ImagePicker fileToKey="profile.png" level="private" track={true} />
+```
+
 ### Add hosting
 
 ```
+
 amplify add hosting
+
 ```
 
 ### Deployment
 
 ```
+
 # manual
+
 amplify publish
+
 ```
+
+## Limitations
+
+Amplify mock [does not support](https://github.com/aws-amplify/amplify-cli/issues/5981) @searchable decorator. You can remove annotation for while or use it directly in aws (omg aws!)

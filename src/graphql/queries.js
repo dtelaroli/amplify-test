@@ -1,6 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const fetchCustom = /* GraphQL */ `
+  query FetchCustom($id: String!) {
+    fetchCustom(id: $id) {
+      id
+      name
+    }
+  }
+`;
 export const getTask = /* GraphQL */ `
   query GetTask($id: ID!) {
     getTask(id: $id) {

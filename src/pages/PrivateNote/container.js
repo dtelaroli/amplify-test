@@ -5,9 +5,10 @@ import {
   editPrivateNote,
   fetchPrivateNote,
   fetchPrivateNotes,
-  removePrivateNote
+  removePrivateNote,
 } from '../../services'
 import { FormPrivateNoteView, ListPrivateNotesView } from './view'
+import React from 'react'
 
 const defaultPrivateNote = {
   content: ''

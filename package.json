@@ -8,7 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "await-to-js": "^2.1.1",
-    "aws-amplify": "^3.3.19",
+    "aws-amplify": "^3.0.20",
     "formik": "^2.2.6",
     "joi": "^17.4.0",
     "luxon": "^1.26.0",
@@ -16,7 +16,7 @@
     "react-async": "^10.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
+    "react-scripts": "^2.0.5",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.8"
   },

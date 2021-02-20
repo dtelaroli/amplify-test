@@ -26,3 +26,7 @@ a:visited {
 table tbody tr td a {
   margin-right: 0.2em;
 }
+
+amplify-s3-image {
+  --width: 300px;
+}

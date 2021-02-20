@@ -1,30 +1,32 @@
 type Task
   @model
+  @key(name: "byTitle", fields: ["title", "createdAt"])
+  # @searchable
   @auth(
     rules: [
-      {
-        allow: groups
-        groups: ["Managers"]
-        queries: [list]
-        mutations: [create, update, delete]
-      }
-      {
-        allow: groups
-        groups: ["Employees"]
-        queries: [get, list]
-        mutations: null
-      }
+      { allow: groups, groups: ["Managers"], queries: [list], mutations: [create, update, delete] }
+      { allow: groups, groups: ["Employees"], queries: [get, list], mutations: null }
     ]
   ) {
   id: ID!
   title: String!
   description: String
   status: TaskStatus!
+  createdAt: AWSDateTime!
 }
 
 type PrivateNote @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   content: String!
+}
+
+type Custom {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  fetchCustom(id: String!): Custom! @function(name: "custom-${env}")
 }
 
 enum TaskStatus {

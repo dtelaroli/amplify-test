@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "api": {
+      "amplifytest": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
