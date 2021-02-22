@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "amplifytest06398ba0": {}
+      },
+      "function": {
+        "custom": {
+          "deploymentBucketName": "amplify-amplifytest-dev-120858-deployment",
+          "s3Key": "amplify-builds/custom-4a6e706b38465a4a686a-build.zip"
+        }
       }
     }
   }

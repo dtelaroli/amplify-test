@@ -69,3 +69,31 @@ export const listPrivateNotes = /* GraphQL */ `
     }
   }
 `;
+export const searchTasks = /* GraphQL */ `
+  query SearchTasks(
+    $filter: SearchableTaskFilterInput
+    $sort: SearchableTaskSortInput
+    $limit: Int
+    $nextToken: String
+    $from: Int
+  ) {
+    searchTasks(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+      from: $from
+    ) {
+      items {
+        id
+        title
+        description
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+      total
+    }
+  }
+`;
