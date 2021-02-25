@@ -1,13 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatDateTime } from '../../utils'
 import { TaskForm } from './form'
 
-export const ListTasksView = ({ tasks = [], remove }) => {
+export const ListTasksView = ({ search, tasks = [], remove }) => {
+  const [value, setValue] = useState("")
+
+  const handleOnChange = ({ target }) => {
+    setValue(target.value)
+    search(target.value)
+  }
+
   return (
     <Fragment>
       <div>
-        <Link to='/tasks/add'>Add Task</Link>
+        <Link to='/tasks/add'>Add Task</Link><br /><br />
+        <input onChange={handleOnChange} value={value} placeholder="Search task" />
       </div>
       <table cellPadding='3'>
         {tasks.length > 0 && (

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAsync } from 'react-async'
 import { useHistory, useParams } from 'react-router-dom'
 import {
   addTask,
   editTask,
   fetchTask,
+
+
   fetchTasks,
-  removeTask
+
+
+  removeTask, searchTask
 } from '../../services'
 import { FormTaskView, ListTasksView } from './view'
 
@@ -17,18 +21,24 @@ const defaultTask = {
 }
 
 export const ListTasks = () => {
-  const { data } = useAsync({ promiseFn: fetchTasks })
+  const [tasks, setTasks] = useState([])
 
-  const onResolve = () => {
-    window.location.reload()
-  }
+  const { run: search } = useAsync({
+    promiseFn: fetchTasks,
+    deferFn: ([text]) => searchTask(text),
+    onResolve: (tasks) => {
+      setTasks(tasks)
+    }
+  })
 
   const { run } = useAsync({
     deferFn: ([task]) => removeTask(task),
-    onResolve
+    onResolve: () => {
+      window.location.reload()
+    }
   })
 
-  return <ListTasksView tasks={data} remove={run} />
+  return <ListTasksView tasks={tasks} remove={run} search={search} />
 }
 
 export const AddTask = () => {

@@ -1,10 +1,22 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { createTask, updateTask, deleteTask } from '../graphql/mutations'
-import { getTask, listTasks } from '../graphql/queries'
+import { getTask, listTasks, searchTasks } from '../graphql/queries'
 
 export const fetchTasks = async () => {
   const taskData = await API.graphql(graphqlOperation(listTasks), {})
   return taskData.data.listTasks.items
+}
+
+export const searchTask = async (text) => {
+  const wildcard = `*${text}*`
+  const filter = {
+    or: [
+      { title: { wildcard } },
+      { description: { wildcard } }
+    ]
+  }
+  const taskData = await API.graphql(graphqlOperation(searchTasks, { limit: 10, filter }))
+  return taskData.data.searchTasks.items
 }
 
 export const fetchTask = async params => {
