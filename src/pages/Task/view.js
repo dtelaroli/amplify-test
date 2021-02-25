@@ -52,6 +52,7 @@ export const ListTasksView = ({ search, tasks = [], notifications, remove }) => 
           <table cellPadding='3'>
             <thead>
               <tr>
+                <th>Operation</th>
                 <th>Title</th>
                 <th>Status</th>
                 <th>Created at</th>
@@ -59,12 +60,13 @@ export const ListTasksView = ({ search, tasks = [], notifications, remove }) => 
               </tr>
             </thead>
             <tbody>
-              {notifications.map(task => (
-                <tr key={task.createdAt}>
-                  <td>{task.title}</td>
-                  <td>{task.status}</td>
-                  <td>{formatDateTime(task.createdAt)}</td>
-                  <td>{formatDateTime(task.updatedAt)}</td>
+              {notifications.map(notification => (
+                <tr key={notification.createdAt}>
+                  <td>{notification.operation}</td>
+                  <td>{notification.title}</td>
+                  <td>{notification.status}</td>
+                  <td>{formatDateTime(notification.createdAt)}</td>
+                  <td>{formatDateTime(notification.updatedAt)}</td>
                 </tr>
               ))}
             </tbody>

@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAsync } from 'react-async'
 import { useHistory, useParams } from 'react-router-dom'
-import {
-  addTask,
-  editTask,
-  fetchTask,
-
-
-  fetchTasks,
-
-
-  listenTasks,
-
-
-  removeTask, searchTask
-} from '../../services'
+import { addTask, editTask, fetchTask, fetchTasks, listenTasks, removeTask, searchTask } from '../../services'
 import { FormTaskView, ListTasksView } from './view'
 
 const defaultTask = {
