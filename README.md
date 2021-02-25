@@ -2,6 +2,19 @@
 
 POC of using AWS [Amplify Framework](https://docs.amplify.aws)
 
+## Tech
+
+- [Amplify](https://docs.amplify.aws)
+- [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [ElasticSearch Service](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/what-is-amazon-elasticsearch-service.html)
+- [AppSync](https://docs.aws.amazon.com/appsync/latest/devguide/what-is-amplify.html)
+- [Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)
+- [Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+- [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev-retired/Welcome.html)
+- [NodeJS](https://nodejs.org/docs/latest-v12.x/api/synopsis.html)
+- [GraphQL](https://graphql.org/code/#javascript)
+- [React](https://pt-br.reactjs.org/docs/getting-started.html)
+
 ## Installation
 
 ```
@@ -131,20 +144,18 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 ### Add hosting
 
 ```
-
 amplify add hosting
-
 ```
 
-### Deployment
+### Manual Deployment
 
 ```
-
-# manual
-
 amplify publish
-
 ```
+
+## Continuous delivery
+
+Configure via AWS console.
 
 ## Limitations
 
