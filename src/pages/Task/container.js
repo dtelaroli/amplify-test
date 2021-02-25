@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAsync } from 'react-async'
 import { useHistory, useParams } from 'react-router-dom'
 import {
@@ -8,6 +8,9 @@ import {
 
 
   fetchTasks,
+
+
+  listenTasks,
 
 
   removeTask, searchTask
@@ -22,6 +25,7 @@ const defaultTask = {
 
 export const ListTasks = () => {
   const [tasks, setTasks] = useState([])
+  const [notifications, setNotifications] = useState([])
 
   const { run: search } = useAsync({
     promiseFn: fetchTasks,
@@ -38,7 +42,17 @@ export const ListTasks = () => {
     }
   })
 
-  return <ListTasksView tasks={tasks} remove={run} search={search} />
+  useEffect(() => {
+    listenTasks(value => {
+      setNotifications(old => [...old, value])
+    })
+  }, [])
+
+  return <ListTasksView
+    tasks={tasks}
+    remove={run}
+    search={search}
+    notifications={notifications} />
 }
 
 export const AddTask = () => {

@@ -1,6 +1,7 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { createTask, updateTask, deleteTask } from '../graphql/mutations'
 import { getTask, listTasks, searchTasks } from '../graphql/queries'
+import { onCreateTask, onDeleteTask, onUpdateTask } from '../graphql/subscriptions'
 
 export const fetchTasks = async () => {
   const taskData = await API.graphql(graphqlOperation(listTasks), {})
@@ -39,4 +40,18 @@ export const removeTask = async ({ id }) => {
     graphqlOperation(deleteTask, { input: { id } })
   )
   return result.data.removeTask
+}
+
+export const listenTasks = (callback) => {
+  API.graphql(graphqlOperation(onCreateTask)).subscribe({
+    next: ({ value }) => callback({ operation: 'create', ...value.data.onCreateTask })
+  })
+
+  API.graphql(graphqlOperation(onUpdateTask)).subscribe({
+    next: ({ value }) => callback({ operation: 'update', ...value.data.onUpdateTask })
+  })
+
+  API.graphql(graphqlOperation(onDeleteTask)).subscribe({
+    next: ({ value }) => callback({ operation: 'delete', ...value.data.onDeleteTask })
+  })
 }
