@@ -2,6 +2,10 @@
 
 POC of using AWS [Amplify Framework](https://docs.amplify.aws)
 
+The serverless backend is in [folder](./amplify/backend).
+
+Front-end is in [folder](./src).
+
 ## Tech
 
 - [Amplify](https://docs.amplify.aws)
