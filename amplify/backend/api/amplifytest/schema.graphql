@@ -1,7 +1,11 @@
 type Task
+  # dynamodb table
   @model
+  # dynamodb key
   @key(name: "byTitle", fields: ["title", "createdAt"])
+  # elastic search service
   @searchable
+  # cognito auth
   @auth(
     rules: [
       { allow: groups, groups: ["Managers"], queries: [list], mutations: [create, update, delete] }
@@ -26,7 +30,19 @@ type Custom {
 }
 
 type Query {
+  # lambda datasource in amplify function
   fetchCustom(id: String!): Custom! @function(name: "custom-${env}")
+}
+
+type Payload {
+  name: String!
+}
+
+type Mutation {
+  # http datasource
+  execHttp(name: String!): AWSJSON @http(method: POST, url: "https://a35vq1nx12.execute-api.us-east-1.amazonaws.com/Prod/test")
+  # lambda datasource in another service
+  execFunction: AWSJSON @function(name: "ApiGatewayPayloadLogger")
 }
 
 enum TaskStatus {

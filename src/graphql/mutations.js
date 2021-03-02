@@ -1,6 +1,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const execFunction = /* GraphQL */ `
+  mutation ExecFunction {
+    execFunction
+  }
+`;
 export const createTask = /* GraphQL */ `
   mutation CreateTask(
     $input: CreateTaskInput!
@@ -86,5 +91,13 @@ export const deletePrivateNote = /* GraphQL */ `
       updatedAt
       owner
     }
+  }
+`;
+export const execHttp = /* GraphQL */ `
+  mutation ExecHttp(
+    $query: MutationExecHttpQueryInput
+    $body: MutationExecHttpBodyInput
+  ) {
+    execHttp(query: $query, body: $body)
   }
 `;
